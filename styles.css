@@ -20,9 +20,9 @@ html {
 }
 
   :root {
-    --pomodoro-image: url('assets/Clouds\ Horizontal.png');
-    --shortBreak-image: url('assets/sus.jpg');
-    --longBreak-image: url('assets/night.jpg');
+    --pomodoro-image: url('assets/castle2.jpg');
+    --shortBreak-image: url('assets/pip.jpg');
+    --longBreak-image: url('assets/xxx.jpg');
   }
 
 
@@ -145,6 +145,7 @@ button:focus, button:active {
   transform: translateY(6px);
   box-shadow: none;
   outline: none;
+  box-shadow: none;
 }
 
 .hidden {
