@@ -170,7 +170,6 @@ progress::-webkit-progress-value {
   transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
   font-family: "Press Start 2P";
 }
-
 .main-button:hover {
   transform: scale(1.1); /* Scale up the button on hover */
 }
