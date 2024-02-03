@@ -1,10 +1,21 @@
 const timer = {
     pomodoro: 45,
-    shortBreak: 10,
+    shortBreak: 1,
     longBreak:30, 
     longBreakInterval: 4, 
     sessions: 0,
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+  const customCursor = document.querySelector('.custom-cursor');
+
+  document.addEventListener('mousemove', function (e) {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    customCursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  });
+});
 
 const modeButtons = document.querySelector('#js-mode-buttons');
 modeButtons.addEventListener('click', handleMode);
@@ -34,6 +45,9 @@ function switchMode(mode) {
     // Set background image based on mode
     const backgroundImage = getComputedStyle(document.body).getPropertyValue(`--${mode}-image`);
     document.body.style.backgroundImage = backgroundImage;
+    document
+    .getElementById('js-progress')
+    .setAttribute('max', timer.remainingTime.total);
   
     updateClock();
   }
@@ -46,10 +60,17 @@ function switchMode(mode) {
     const sec = document.getElementById('js-seconds');
     min.textContent = minutes;
     sec.textContent = seconds;
+    
+    const text = timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+    document.title = `${minutes}:${seconds} — ${text}`;
+
+    const progress = document.getElementById('js-progress');
+    progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
   }  
 let interval;
 
 function startTimer() {
+    document.querySelector(`[data-sound="${timer.mode}"]`).play();
     let { total } = timer.remainingTime;
     const endTime = Date.parse(new Date()) + total * 1000;
     
@@ -97,8 +118,11 @@ function startTimer() {
       seconds,
     };
   }
+
+  const buttonSound = new Audio('button-sound.mp3');
   const mainButton = document.getElementById('js-btn');
-mainButton.addEventListener('click', () => {
+  mainButton.addEventListener('click', () => {
+  buttonSound.play();
   const { action } = mainButton.dataset;
   if (action === 'start') {
     startTimer();
@@ -118,3 +142,30 @@ document.addEventListener('DOMContentLoaded', () => {
     mainButton.textContent = 'start';
     mainButton.classList.remove('active');
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Let's check if the browser supports notifications
+    if ('Notification' in window) {
+      // If notification permissions have neither been granted or denied
+      if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+        // ask the user for permission
+        Notification.requestPermission().then(function(permission) {
+          // If permission is granted
+          if (permission === 'granted') {
+            // Create a new notification
+            new Notification(
+              'Awesome! You will be notified at the start of each session'
+            );
+          }
+        });
+      }
+    }
+  
+    switchMode('pomodoro');
+  });
+
+  if (Notification.permission === 'granted') {
+    const text =
+      timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+    new Notification(text);
+  } 

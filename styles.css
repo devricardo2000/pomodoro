@@ -11,10 +11,11 @@
 
 html {
   box-sizing: border-box;
+  cursor: none;
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -24,8 +25,7 @@ html {
     --shortBreak-image: url('assets/pip.jpg');
     --longBreak-image: url('assets/xxx.jpg');
   }
-
-
+  
   body {
     background-image: var(--pomodoro-image);
     background-size: cover; /* Adjust as needed */
@@ -33,7 +33,18 @@ html {
     background-repeat: no-repeat;
     font-family: "Press Start 2P";
     user-select: none;
+    cursor: none;
   }
+  .custom-cursor {
+    position: fixed;
+    width: 50px; /* Adjust the width of your custom cursor */
+    height: 50px; /* Adjust the height of your custom cursor */
+    background-image: url('assets/SeekPng.com_pixel-mouse-png_3985187.png'); /* Replace with your actual image path */
+    background-size: cover;
+    pointer-events: none; /* Ensure the cursor does not interfere with interactions */
+    z-index: 9999; /* Set a high z-index to ensure it appears on top of other elements */
+  }
+
   body.short-break {
     background-image: var(--shortBreak-image);
     background-size: cover; /* Adjust as needed */
@@ -41,6 +52,7 @@ html {
     background-repeat: no-repeat;
     font-family: "Press Start 2P";
     user-select: none;
+    cursor: none;
   }
   
   body.long-break {
@@ -50,6 +62,7 @@ html {
     background-repeat: no-repeat;
     font-family: "Press Start 2P";
     user-select: none;
+    cursor: none;
   }
   
 progress {
@@ -59,10 +72,12 @@ progress {
   position: fixed;
   top: 0;
   color: aqua;
+  cursor: none;
 }
 
 progress::-webkit-progress-bar {
  background-color: rgba(0, 0, 0, 0.1);;
+ cursor: none;
 }
 
 progress::-webkit-progress-value {
@@ -102,24 +117,43 @@ progress::-webkit-progress-value {
 .mode-button {
   font-size: 16px;
   height: 28px;
-  cursor: pointer;
+  cursor: none;
   box-shadow: none;
   font-weight: 300;
-  color: blue;
-  border: 3px solid orange;
+  color: rgb(255, 255, 255);
+  border: 3px solid rgb(255, 255, 255);
   margin: 0px;
   border-radius: 4px;
   padding: 2px 12px;
   background: none;
   font-family:"Press Start 2P";
+  transition: 1s ease-in-out; 
+}
+.mode-button:hover {
+  transition: 1s ease-in-out;
+  background: #4F95DA;
+}
+
+.mode-button:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.mode-button span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 .mode-button.active {
-  border-color: #fff;
+  border-color: #000000;
+  cursor: none;
+}
+.no-cursor {
+  cursor: none;
 }
 
 .main-button {
-  cursor: pointer;
+  cursor: none;
   box-shadow: rgb(0, 0, 0) 8px 8px 0px;
   font-size: 22px;
   height: 55px;
@@ -133,8 +167,17 @@ progress::-webkit-progress-value {
   margin: 20px 0px 0px;
   padding: 0px 12px;
   border-radius: 4px;
-  transition: color 0.5s ease-in-out 0s;
-  font-family:"Press Start 2P";
+  transition: transform 0.2s ease-in-out; /* Add a smooth transition effect */
+  font-family: "Press Start 2P";
+}
+
+.main-button:hover {
+  transform: scale(1.1); /* Scale up the button on hover */
+}
+
+/* Active (clicked) effect */
+.main-button:active {
+  transform: translateY(6px); /* Move the button down slightly when clicked */
 }
 
 button:focus, button:active {
@@ -150,6 +193,7 @@ button:focus, button:active {
 
 .hidden {
   display: none;
+  cursor: none;
 }
 
 @media screen and (max-width: 550px) {
