@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 const timer = {
-  pomodoro: 25,
-  shortBreak: 5,
-  longBreak: 15,
+  pomodoro: 40,
+  shortBreak: 10,
+  longBreak: 30,
   longBreakInterval: 4,
   sessions: 0,
 };
