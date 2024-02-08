@@ -30,7 +30,7 @@ html {
 
 body {
   background-image: var(--pomodoro-image);
-  background-size: cover; /* Adjust as needed */
+  background-size: auto; /* Adjust as needed */
   background-position: initial; /* Adjust as needed */
   background-repeat: no-repeat;
   font-family: "Press Start 2P";
@@ -53,7 +53,7 @@ body {
 
 body.short-break {
   background-image: var(--shortBreak-image);
-  background-size: cover; /* Adjust as needed */
+  background-size: auto; /* Adjust as needed */
   background-position: initial; /* Adjust as needed */
   background-repeat: no-repeat;
   font-family: "Press Start 2P";
@@ -63,7 +63,7 @@ body.short-break {
 
 body.long-break {
   background-image: var(--longBreak-image);
-  background-size: cover; /* Adjust as needed */
+  background-size: auto; /* Adjust as needed */
   background-position: initial; /* Adjust as needed */
   background-repeat: no-repeat;
   font-family: "Press Start 2P";
