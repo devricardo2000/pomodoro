@@ -1,8 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const customCursor = document.querySelector(".custom-cursor");
 
-document.addEventListener('DOMContentLoaded', function () {
-  const customCursor = document.querySelector('.custom-cursor');
-
-  document.addEventListener('mousemove', function (e) {
+  document.addEventListener("mousemove", function (e) {
     const mouseX = e.clientX;
     const mouseY = e.clientY;
 
@@ -18,7 +17,6 @@ const timer = {
 };
 
 let interval;
-
 function getRemainingTime(endTime) {
   const currentTime = Date.parse(new Date());
   const difference = endTime - currentTime;
@@ -36,17 +34,17 @@ function getRemainingTime(endTime) {
 
 function updateClock() {
   const { remainingTime } = timer;
-  const minutes = `${remainingTime.minutes}`.padStart(2, '0');
-  const seconds = `${remainingTime.seconds}`.padStart(2, '0');
+  const minutes = `${remainingTime.minutes}`.padStart(2, "0");
+  const seconds = `${remainingTime.seconds}`.padStart(2, "0");
 
-  const min = document.getElementById('js-minutes');
-  const sec = document.getElementById('js-seconds');
+  const min = document.getElementById("js-minutes");
+  const sec = document.getElementById("js-seconds");
   const time = `${minutes}:${seconds}`;
   min.textContent = minutes;
   sec.textContent = seconds;
 
   document.title = `${time} - Freshman Pomodoro Clock Demo`;
-  const progress = document.getElementById('js-progress');
+  const progress = document.getElementById("js-progress");
   progress.value = timer[timer.mode] * 60 - timer.remainingTime.total;
 }
 
@@ -54,13 +52,13 @@ function startTimer() {
   let { total } = timer.remainingTime;
   const endTime = Date.parse(new Date()) + total * 1000;
 
-  if (timer.mode === 'pomodoro') timer.sessions++;
+  if (timer.mode === "pomodoro") timer.sessions++;
 
-  mainButton.dataset.action = 'stop';
-  mainButton.classList.add('active');
-  mainButton.textContent = 'stop';
+  mainButton.dataset.action = "stop";
+  mainButton.classList.add("active");
+  mainButton.textContent = "stop";
 
-  interval = setInterval(function() {
+  interval = setInterval(function () {
     timer.remainingTime = getRemainingTime(endTime);
     total = timer.remainingTime.total;
     updateClock();
@@ -68,20 +66,20 @@ function startTimer() {
       clearInterval(interval);
 
       switch (timer.mode) {
-        case 'pomodoro':
+        case "pomodoro":
           if (timer.sessions % timer.longBreakInterval === 0) {
-            switchMode('longBreak');
+            switchMode("longBreak");
           } else {
-            switchMode('shortBreak');
+            switchMode("shortBreak");
           }
           break;
         default:
-          switchMode('pomodoro');
+          switchMode("pomodoro");
       }
 
-      if (Notification.permission === 'granted') {
+      if (Notification.permission === "granted") {
         const text =
-          timer.mode === 'pomodoro' ? 'Get back to work!' : 'Take a break!';
+          timer.mode === "pomodoro" ? "Get back to work!" : "Take a break!";
         new Notification(text);
       }
 
@@ -94,9 +92,9 @@ function startTimer() {
 function stopTimer() {
   clearInterval(interval);
 
-  mainButton.dataset.action = 'start';
-  mainButton.classList.remove('active');
-  mainButton.textContent = 'start';
+  mainButton.dataset.action = "start";
+  mainButton.classList.remove("active");
+  mainButton.textContent = "start";
 }
 
 function switchMode(mode) {
@@ -108,12 +106,12 @@ function switchMode(mode) {
   };
 
   document
-    .querySelectorAll('button[data-mode]')
-    .forEach(e => e.classList.remove('active'));
-  document.querySelector(`[data-mode="${mode}"]`).classList.add('active');
+    .querySelectorAll("button[data-mode]")
+    .forEach((e) => e.classList.remove("active"));
+  document.querySelector(`[data-mode="${mode}"]`).classList.add("active");
   document
-    .getElementById('js-progress')
-    .setAttribute('max', timer.remainingTime.total);
+    .getElementById("js-progress")
+    .setAttribute("max", timer.remainingTime.total);
   document.body.style.backgroundColor = `var(--${mode})`;
 
   updateClock();
@@ -129,31 +127,31 @@ function handleMode(event) {
   stopTimer();
 }
 
-const buttonSound = new Audio('button-sound.mp3');
-const mainButton = document.getElementById('js-btn');
-mainButton.addEventListener('click', () => {
+const buttonSound = new Audio("button-sound.mp3");
+const mainButton = document.getElementById("js-btn");
+mainButton.addEventListener("click", () => {
   const { action } = mainButton.dataset;
   buttonSound.play();
-  if (action === 'start') {
+  if (action === "start") {
     startTimer();
   } else {
     stopTimer();
   }
 });
 
-const modeButtons = document.querySelector('#js-mode-buttons');
-modeButtons.addEventListener('click', handleMode);
+const modeButtons = document.querySelector("#js-mode-buttons");
+modeButtons.addEventListener("click", handleMode);
 
-document.addEventListener('DOMContentLoaded', () => {
-  if ('Notification' in window && Notification.permission !== 'denied') {
-    Notification.requestPermission().then(function(permission) {
-      if (permission === 'granted') {
+document.addEventListener("DOMContentLoaded", () => {
+  if ("Notification" in window && Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      if (permission === "granted") {
         new Notification(
-          'Awesome! You will receive notifications at the start of a pomodoro or a break'
+          "Awesome! You will receive notifications at the start of a pomodoro or a break"
         );
       }
     });
   }
 
-  switchMode('pomodoro');
+  switchMode("pomodoro");
 });
