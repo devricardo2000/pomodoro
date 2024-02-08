@@ -28,7 +28,7 @@ html {
   
   body {
     background-image: var(--pomodoro-image);
-    background-size: cover; /* Adjust as needed */
+    background-size: auto; /* Adjust as needed */
     background-position: initial; /* Adjust as needed */
     background-repeat: no-repeat;
     font-family: "Press Start 2P";
@@ -197,6 +197,30 @@ button:focus, button:active {
 
 @media screen and (max-width: 550px) {
   .clock {
-    font-size: 8rem;
+    font-size: 4rem; /* Decrease font size for smaller screens */
+    margin-top: 17px; /* Adjust margin top */
+    margin-bottom: auto; /* Adjust margin bottom */
+    margin-right: auto;
+  }
+
+  .mode-button {
+    font-size: 14px; /* Decrease button font size */
+    height: 35px; /* Decrease button height */
+    margin: 8px; /* Add margin to create space between buttons for smaller screens */
+  }
+
+  .custom-cursor {
+    display: none; /* Hide the custom cursor for phone screens */
+  }
+
+  .main-button {
+    font-size: 18px; /* Decrease button font size */
+    height: 45px; /* Decrease button height */
+    width: 170px; /* Decrease button width */
+    padding: 0px 8px; /* Adjust button padding */
+  }
+  .mode-button.active {
+    border-color: blue;
+    cursor: none;
   }
 }
