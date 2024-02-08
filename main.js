@@ -116,7 +116,22 @@ function switchMode(mode) {
 
   updateClock();
 }
-
+function updateBackgroundImage(mode) {
+  const body = document.body;
+  switch (mode) {
+    case "pomodoro":
+      body.style.backgroundImage = `var(--pomodoro-image)`;
+      break;
+    case "shortBreak":
+      body.style.backgroundImage = `var(--shortBreak-image)`;
+      break;
+    case "longBreak":
+      body.style.backgroundImage = `var(--longBreak-image)`;
+      break;
+    default:
+      body.style.backgroundImage = `var(--pomodoro-image)`;
+  }
+}
 function handleMode(event) {
   const { mode } = event.target.dataset;
 
@@ -125,6 +140,8 @@ function handleMode(event) {
   timer.sessions = 0;
   switchMode(mode);
   stopTimer();
+
+  updateBackgroundImage(mode);
 }
 
 const buttonSound = new Audio("button-sound.mp3");

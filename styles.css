@@ -30,7 +30,7 @@ html {
 
 body {
   background-image: var(--pomodoro-image);
-  background-size: auto; /* Adjust as needed */
+  background-size: cover; /* Adjust as needed */
   background-position: initial; /* Adjust as needed */
   background-repeat: no-repeat;
   font-family: "Press Start 2P";
