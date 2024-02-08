@@ -37,6 +37,10 @@ body {
   user-select: none;
   cursor: none;
 }
+
+.logo {
+  font-size: 48px;
+}
 .custom-cursor {
   position: fixed;
   width: 50px; /* Adjust the width of your custom cursor */
