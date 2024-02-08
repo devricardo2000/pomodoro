@@ -201,17 +201,18 @@ button:focus, button:active {
     margin-top: 17px; /* Adjust margin top */
     margin-bottom: auto; /* Adjust margin bottom */
     margin-right: auto;
+    cursor: pointer;
   }
 
   .mode-button {
     font-size: 14px; /* Decrease button font size */
     height: 35px; /* Decrease button height */
     margin: 8px; /* Add margin to create space between buttons for smaller screens */
+    cursor: pointer;
   }
 
   .custom-cursor {
     display: none; /* Hide the custom cursor for phone screens */
-  }
 
   .main-button {
     font-size: 18px; /* Decrease button font size */
@@ -221,6 +222,6 @@ button:focus, button:active {
   }
   .mode-button.active {
     border-color: blue;
-    cursor: none;
+    cursor: pointer;
   }
 }
