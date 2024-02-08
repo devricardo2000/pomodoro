@@ -14,57 +14,59 @@ html {
   cursor: none;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-  :root {
-    --pomodoro-image: url('assets/castle2.jpg');
-    --shortBreak-image: url('assets/pip.jpg');
-    --longBreak-image: url('assets/xxx.jpg');
-  }
-  
-  body {
-    background-image: var(--pomodoro-image);
-    background-size: auto; /* Adjust as needed */
-    background-position: initial; /* Adjust as needed */
-    background-repeat: no-repeat;
-    font-family: "Press Start 2P";
-    user-select: none;
-    cursor: none;
-  }
-  .custom-cursor {
-    position: fixed;
-    width: 50px; /* Adjust the width of your custom cursor */
-    height: 50px; /* Adjust the height of your custom cursor */
-    background-image: url('assets/SeekPng.com_pixel-mouse-png_3985187.png'); /* Replace with your actual image path */
-    background-size: cover;
-    pointer-events: none; /* Ensure the cursor does not interfere with interactions */
-    z-index: 9999; /* Set a high z-index to ensure it appears on top of other elements */
-  }
+:root {
+  --pomodoro-image: url("assets/castle2.jpg");
+  --shortBreak-image: url("assets/pip.jpg");
+  --longBreak-image: url("assets/xxx.jpg");
+}
 
-  body.short-break {
-    background-image: var(--shortBreak-image);
-    background-size: cover; /* Adjust as needed */
-    background-position: initial; /* Adjust as needed */
-    background-repeat: no-repeat;
-    font-family: "Press Start 2P";
-    user-select: none;
-    cursor: none;
-  }
-  
-  body.long-break {
-    background-image: var(--longBreak-image);
-    background-size: cover; /* Adjust as needed */
-    background-position: initial; /* Adjust as needed */
-    background-repeat: no-repeat;
-    font-family: "Press Start 2P";
-    user-select: none;
-    cursor: none;
-  }
-  
+body {
+  background-image: var(--pomodoro-image);
+  background-size: auto; /* Adjust as needed */
+  background-position: initial; /* Adjust as needed */
+  background-repeat: no-repeat;
+  font-family: "Press Start 2P";
+  user-select: none;
+  cursor: none;
+}
+.custom-cursor {
+  position: fixed;
+  width: 50px; /* Adjust the width of your custom cursor */
+  height: 50px; /* Adjust the height of your custom cursor */
+  background-image: url("assets/SeekPng.com_pixel-mouse-png_3985187.png"); /* Replace with your actual image path */
+  background-size: cover;
+  pointer-events: none; /* Ensure the cursor does not interfere with interactions */
+  z-index: 9999; /* Set a high z-index to ensure it appears on top of other elements */
+}
+
+body.short-break {
+  background-image: var(--shortBreak-image);
+  background-size: cover; /* Adjust as needed */
+  background-position: initial; /* Adjust as needed */
+  background-repeat: no-repeat;
+  font-family: "Press Start 2P";
+  user-select: none;
+  cursor: none;
+}
+
+body.long-break {
+  background-image: var(--longBreak-image);
+  background-size: cover; /* Adjust as needed */
+  background-position: initial; /* Adjust as needed */
+  background-repeat: no-repeat;
+  font-family: "Press Start 2P";
+  user-select: none;
+  cursor: none;
+}
+
 progress {
   border-radius: 2px;
   width: 100%;
@@ -76,8 +78,8 @@ progress {
 }
 
 progress::-webkit-progress-bar {
- background-color: rgba(0, 0, 0, 0.1);;
- cursor: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: none;
 }
 
 progress::-webkit-progress-value {
@@ -91,14 +93,14 @@ progress::-webkit-progress-value {
   transform: translate(-50%, -50%);
   padding: 20px;
   text-align: center;
-  font-family:"Press Start 2P";
+  font-family: "Press Start 2P";
 }
 
 .clock {
   margin-top: 70px;
   margin-bottom: 30px;
   font-size: 12rem;
-  font-family:"Press Start 2P";
+  font-family: "Press Start 2P";
   color: yellow;
   line-height: 1;
   display: flex;
@@ -108,7 +110,7 @@ progress::-webkit-progress-value {
   margin-top: 70px;
   margin-bottom: 30px;
   font-size: 12rem;
-  font-family:"Press Start 2P";
+  font-family: "Press Start 2P";
   color: rgb(0, 0, 0);
   line-height: 1;
   display: flex;
@@ -126,12 +128,12 @@ progress::-webkit-progress-value {
   border-radius: 4px;
   padding: 2px 12px;
   background: none;
-  font-family:"Press Start 2P";
-  transition: 1s ease-in-out; 
+  font-family: "Press Start 2P";
+  transition: 1s ease-in-out;
 }
 .mode-button:hover {
   transition: 1s ease-in-out;
-  background: #4F95DA;
+  background: #4f95da;
 }
 
 .mode-button:hover svg {
@@ -145,7 +147,7 @@ progress::-webkit-progress-value {
 }
 
 .mode-button.active {
-  border-color: #000000;
+  border-color: orangered;
   cursor: none;
 }
 .no-cursor {
@@ -179,7 +181,8 @@ progress::-webkit-progress-value {
   transform: translateY(6px); /* Move the button down slightly when clicked */
 }
 
-button:focus, button:active {
+button:focus,
+button:active {
   outline: none;
 }
 
@@ -214,14 +217,15 @@ button:focus, button:active {
   .custom-cursor {
     display: none; /* Hide the custom cursor for phone screens */
 
-  .main-button {
-    font-size: 18px; /* Decrease button font size */
-    height: 45px; /* Decrease button height */
-    width: 170px; /* Decrease button width */
-    padding: 0px 8px; /* Adjust button padding */
-  }
-  .mode-button.active {
-    border-color: blue;
-    cursor: pointer;
+    .main-button {
+      font-size: 18px; /* Decrease button font size */
+      height: 45px; /* Decrease button height */
+      width: 170px; /* Decrease button width */
+      padding: 0px 8px; /* Adjust button padding */
+    }
+    .mode-button.active {
+      border-color: blue;
+      cursor: pointer;
+    }
   }
 }
